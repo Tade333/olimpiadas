@@ -1,0 +1,235 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color:#349191; /* Fondo general */
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1A3636; /* Fondo de la barra de navegación */
+    padding: 10px 20px;
+}
+
+.logo img {
+    height: 50px;
+    border-radius: 100%;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar input {
+    width: 300px;
+    padding: 15px;
+    border: none;
+    border-radius: 20px 0 0 20px;
+    outline: none;
+    background-color: #1e640c; /* Fondo del campo de búsqueda */
+    color: #f1f1f1; /* Color del texto en el campo de búsqueda */
+}
+.search-bar input::placeholder{
+    color: #f1f1f1;
+}
+
+.search-bar button {
+    padding: 12px;
+    border: none;
+    border-radius: 0 20px 20px 0;
+    background-color: #f8faf7; /* Fondo del botón de búsqueda */
+    cursor: pointer;
+}
+
+.search-bar button img {
+    height: 20px;
+}
+
+.menu-icon img {
+    height: 40px;
+    background-image: none;
+}
+
+/* Navigation Menu */
+nav ul {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    background-color: #2F4F4F; /* Fondo del menú de navegación */
+}
+
+nav ul li {
+    padding: 14px 20px;
+}
+
+nav ul li a {
+    color: #F5F5DC; /* Color del texto del menú */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav ul li a:hover {
+    color: #D6BD98; /* Color del texto al pasar el cursor */
+}
+
+/* Brand Logos */
+.productos {
+    padding: 20px;
+    background-color: #40534C; /* Fondo de la sección de logos */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    width: 90%;
+    border-radius: 10px;
+}
+
+.productos-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.productosIndividual{
+   background-color: #ccc;
+   width: 20%;
+   height: 200px;
+}
+.productosIndividual img {
+    height: 80px;
+    margin: 0 15px;
+    transition: transform 0.3s ease;
+}
+
+.productosIndividual img:hover {
+    transform: scale(1.1);
+}
+
+/* Footer */
+footer {
+    
+    text-align: center;
+    padding: 20px;
+    background-color: #1A3636; /* Fondo del pie de página */
+    color: #F5F5DC; /* Color del texto en el pie de página */
+    
+}
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 1100px;
+    margin: 50px auto;
+    overflow: hidden;
+}
+
+.carousel-wrapper {
+    overflow: hidden;
+    width: 100%;
+}
+
+.carousel {
+    display: flex;
+    transition: transform 0.3s ease-in-out;
+}
+
+.carousel-item {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: calc(30% - 10px);
+    margin-right: 10px;
+    text-align: center;
+    position: relative;
+    flex-shrink: 0; /* Evita que las tarjetas se encojan */
+}
+
+.carousel-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.discount {
+    background-color: red;
+    color: white;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 5px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.price-before {
+    text-decoration: line-through;
+    color: #888;
+}
+
+.price-now {
+    font-size: 1.5em;
+    color: #000;
+    margin: 10px 0;
+}
+
+.installments {
+    color: green;
+    font-weight: bold;
+}
+
+.sizes {
+    margin-bottom: 10px;
+}
+
+.add-to-cart {
+    background-color: black;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1em;
+}
+
+.add-to-cart:hover {
+    background-color: darkgray;
+}
+
+/* Estilo para las flechas de navegación */
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 2rem;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+    display: none; /* Ocultas inicialmente */
+}
+
+.left-arrow {
+    left: 10px;
+}
+
+.right-arrow {
+    right: 10px;
+}
+
+/* Mostrar flecha derecha por defecto */
+#rightArrow {
+    display: block;
+}
+
+/* Efecto hover sobre las flechas */
+.arrow:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
