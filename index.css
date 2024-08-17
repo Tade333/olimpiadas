@@ -7,6 +7,13 @@ body {
 }
 
 /* Navbar */
+#titulo{
+    text-align: center;
+    color: #ccc;
+    display: none;
+    
+}
+
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -122,7 +129,8 @@ footer {
 .carousel-container {
     position: relative;
     width: 100%;
-    max-width: 1100px;
+   
+
     margin: 50px auto;
     overflow: hidden;
 }
@@ -142,7 +150,7 @@ footer {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    width: calc(30% - 10px);
+    width: calc(20% - 15px);
     margin-right: 10px;
     text-align: center;
     position: relative;
@@ -154,6 +162,31 @@ footer {
     height: auto;
     border-radius: 10px;
 }
+.carrusel {
+    width: 300px; /* Ajusta el ancho según sea necesario */
+    overflow: hidden;
+    position: relative;
+    margin: 0 auto;
+    margin-bottom: 15px;
+  }
+  
+  .carrusel-contenido {
+    display: flex;
+    justify-content: center;
+    transition: transform 0.5s ease;
+  }
+  
+  .marca {
+    display: flex;
+    justify-content: center;
+    min-width: 100%; /* Cada marca ocupa el 100% del carrusel */
+  }
+  
+  .marca img {
+   
+    width: 100%;
+    height: auto;
+  }
 
 .discount {
     background-color: red;

@@ -34,8 +34,7 @@
 
     <div class="carousel-container">
         <!-- Flecha Izquierda, inicialmente oculta -->
-        <button class="arrow left-arrow" id="leftArrow" onclick="moveCarousel(-1)">&#8249;</button>
-
+        
 
         <form action="guardar_producto.php" method="POST" enctype="multipart/form-data">
         <!-- Aquí va tu formulario -->
@@ -108,8 +107,10 @@
             <br>
             <input type="submit" value="Guardar Producto">
         </div>
+        
     </form>
-
+   
+    <h2 id="titulo">Ofertas destacadas</h2>
     <script>
         function mostrarOpciones() {
             var tipoProducto = document.getElementById('tipo_producto').value;
@@ -117,9 +118,12 @@
             document.getElementById('opciones_producto').style.display = tipoProducto ? 'block' : 'none';
         }
     </script>
+   
 
         <!-- Área visible del carrusel -->
         <div class="carousel-container">
+        <button class="arrow left-arrow" id="leftArrow" onclick="moveCarousel(-1)">&#8249;</button>
+
             <div class="carousel-wrapper">
                 <div class="carousel" id="carousel">
                     <?php
@@ -167,12 +171,36 @@
                     ?>
                 </div>
             </div>
+            <button class="arrow right-arrow" id="rightArrow" onclick="moveCarousel(1)">&#8250;</button>
         </div>
 
         <!-- Flecha Derecha -->
-        <button class="arrow right-arrow" id="rightArrow" onclick="moveCarousel(1)">&#8250;</button>
-    
+        
+        <div class="carrusel">
+  <div class="carrusel-contenido">
+    <div class="marca"><img src="adidas.png" alt="Marca 1"></div>
+    <div class="marca"><img src="converse.png" alt="Marca 2"></div>
+    <div class="marca"><img src="puma.png" alt="Marca 3"></div>
+    <!-- Agrega más marcas según sea necesario -->
+  </div>
+</div>
+<script> 
+    let index = 0; // Índice inicial
+const marcas = document.querySelectorAll('.marca'); // Selecciona todas las marcas
+const totalMarcas = marcas.length; // Total de marcas
 
+function mostrarMarca() {
+  // Calcula el desplazamiento
+  const desplazamiento = -index * 100; // 100% por cada marca
+  document.querySelector('.carrusel-contenido').style.transform = `translateX(${desplazamiento}%)`;
+  
+  // Incrementa el índice
+  index = (index + 1) % totalMarcas; // Vuelve al inicio al llegar al final
+}
+
+// Cambia de marca cada 3 segundos
+setInterval(mostrarMarca, 3000);
+</script>
     <script src="index.js"></script>
 
     <footer>
