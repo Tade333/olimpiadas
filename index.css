@@ -162,32 +162,32 @@ footer {
     height: auto;
     border-radius: 10px;
 }
-.carrusel {
-    width: 300px; /* Ajusta el ancho según sea necesario */
-    overflow: hidden;
-    position: relative;
-    margin: 0 auto;
-    margin-bottom: 15px;
-  }
-  
-  .carrusel-contenido {
-    display: flex;
-    justify-content: center;
-    transition: transform 0.5s ease;
-  }
-  
-  .marca {
-    display: flex;
-    justify-content: center;
-    min-width: 100%; /* Cada marca ocupa el 100% del carrusel */
-  }
-  
-  .marca img {
-   
-    width: 100%;
-    height: auto;
-  }
+/* styles.css */
 
+
+.carrusel {
+    width: 600px; /* Ancho del carrusel (5 imágenes a 120px cada una) */
+    overflow: hidden; /* Ocultar elementos que se salen */
+    
+    margin: 20px auto; /* Centrar el carrusel */
+}
+
+.carrusel-items {
+    display: flex; /* Usar flexbox para alinear los items */
+    transition: transform 0.5s ease; /* Transición suave al desplazarse */
+}
+
+.item {
+    min-width: 120px; /* Ancho de cada imagen */
+    max-width: 150px;
+    height: 100%;
+  
+   
+}
+
+a {
+    text-decoration: none; /* Quitar subrayado de los enlaces */
+}
 .discount {
     background-color: red;
     color: white;

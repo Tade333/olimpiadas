@@ -177,29 +177,35 @@
         <!-- Flecha Derecha -->
         
         <div class="carrusel">
-  <div class="carrusel-contenido">
-    <div class="marca"><img src="adidas.png" alt="Marca 1"></div>
-    <div class="marca"><img src="converse.png" alt="Marca 2"></div>
-    <div class="marca"><img src="puma.png" alt="Marca 3"></div>
-    <!-- Agrega más marcas según sea necesario -->
-  </div>
-</div>
+        <div class="carrusel-items">
+            <a href="guardar_producto.php" ><img src="nike.jpg" alt="Imagen 1" class="item" ></a>
+            <a href="#"><img src="adidas.png" alt="Imagen 2" class="item" ></a>
+            <a href="#"><img src="crocs.jpg" alt="Imagen 3" class="item"></a>
+            <a href="#"><img src="converse.png" alt="Imagen 4" class="item"></a>
+            <a href="#"><img src="nb.jpg" alt="Imagen 5" class="item"></a>
+            <a href="#"><img src="polo.jpg" alt="Imagen 6" class="item"></a>
+            <a href="#"><img src="topper.jpg" alt="Imagen 7" class="item"></a>
+            
+            <a href="#"><img src="puma.png" alt="Imagen 8" class="item"></a>
+            
+        </div>
+    </div>
 <script> 
-    let index = 0; // Índice inicial
-const marcas = document.querySelectorAll('.marca'); // Selecciona todas las marcas
-const totalMarcas = marcas.length; // Total de marcas
+   // script.js
+let currentIndex = 0;
+const items = document.querySelectorAll('.carrusel .item');
+const totalItems = items.length;
+const itemsToShow = 4; // Cantidad de imágenes a mostrar
+const itemWidth = 150; // Ancho de cada imagen
 
-function mostrarMarca() {
-  // Calcula el desplazamiento
-  const desplazamiento = -index * 100; // 100% por cada marca
-  document.querySelector('.carrusel-contenido').style.transform = `translateX(${desplazamiento}%)`;
-  
-  // Incrementa el índice
-  index = (index + 1) % totalMarcas; // Vuelve al inicio al llegar al final
+function showNextItems() {
+    currentIndex = (currentIndex + 1) % (totalItems - itemsToShow + 1); // Incrementar el índice
+    const offset = -currentIndex * itemWidth; // Calcular el desplazamiento
+    document.querySelector('.carrusel-items').style.transform = `translateX(${offset}px)`; // Aplicar el desplazamiento
 }
 
-// Cambia de marca cada 3 segundos
-setInterval(mostrarMarca, 3000);
+// Cambiar automáticamente cada 3 segundos
+setInterval(showNextItems, 3000);
 </script>
     <script src="index.js"></script>
 
