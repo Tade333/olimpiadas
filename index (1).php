@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sports Store</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="index2.css">
 </head>
 <body>
     <header>
@@ -14,13 +14,13 @@
             </div>
             <div class="search-bar">
                 <input type="text" placeholder="Search...">
-                <button type="submit"><img src="lupa.png" alt="Search"></button>
+                <button type="submit"><img src="search-icon.png" alt="Search"></button>
             </div>
             <div class="menu-icon">
-                <img src="3puntos.webpp.webp" alt="Menu">
+                <img src="menu-icon.png" alt="Menu">
             </div>
         </div>
-       <nav>
+        <nav>
     <ul>
         <li><a href="#">Ofertas</a></li>
         <li><a href="#">Marcas</a></li>
@@ -63,94 +63,102 @@
         <li><a href="#">Niños</a></li>
     </ul>
 </nav>
+
     </header>
 
     <div class="carousel-container">
         <!-- Flecha Izquierda, inicialmente oculta -->
-        
+        <button class="arrow left-arrow" id="leftArrow" onclick="moveCarousel(-1)">&#8249;</button>
+
 
         <form action="guardar_producto.php" method="POST" enctype="multipart/form-data">
-        <!-- Aquí va tu formulario -->
-        <!-- Campo de tipo de producto -->
+    <!-- Paso 1: Crear nueva publicación -->
+    <div id="paso1" class="form-step">
+        <h2>Crear nueva publicación</h2>
+        <button type="button" onclick="mostrarPaso(2)">Comenzar</button>
+    </div>
+
+    <!-- Paso 2: Selección de tipo de producto -->
+    <div id="paso2" class="form-step" style="display:none;">
         <label for="tipo_producto">¿Qué tipo de producto es?</label>
         <select id="tipo_producto" name="tipo_producto" onchange="mostrarOpciones()">
             <option value="">Seleccione una opción</option>
             <option value="indumentaria">Indumentaria</option>
+            <option value="zapatillas">Zapatillas</option>
+            <option value="accesorios">Accesorios</option>
+            <option value="sandalias">Sandalias</option>
             <option value="deporte">Productos de deporte</option>
         </select>
+        <button type="button" onclick="mostrarPaso(3)" disabled id="next1">Siguiente</button>
+    </div>
 
-        <!-- Sección común para ambos tipos de productos -->
+    <!-- Paso 3: Selección de categoría -->
+    <div id="paso3" class="form-step" style="display:none;">
         <div id="opciones_producto" style="display: none;">
             <label for="categoria_producto">Seleccione la categoría</label>
-            <select id="categoria_producto" name="categoria_producto">
-                <option value="pantalon">Pantalón</option>
-                <option value="zapatillas">Zapatillas</option>
-                <option value="remeras">Remeras</option>
-                <option value="medias">Medias</option>
-                <option value="futbol">Fútbol</option>
-                <option value="basquet">Básquet</option>
-                <option value="rugby">Rugby</option>
+            <select id="categoria_producto" name="categoria_producto" onchange="activarSiguiente()">
+                <!-- Opciones de categoría se llenarán dinámicamente -->
             </select>
-
-            <!-- Nombre, Imagen, Precio -->
-            <br>
-            <label for="nombre_producto">Nombre del producto</label>
-            <input type="text" id="nombre_producto" name="nombre_producto" required>
-            <br>
-            <label for="imagen_producto">Imagen del producto</label>
-            <input type="file" id="imagen_producto" name="imagen_producto" accept="image/*" required>
-            <br>
-            <label for="precio_producto">Precio</label>
-            <input type="number" id="precio_producto" name="precio_producto" required>
-
-            <br>
-            <label for="cuotas">¿Ofrece cuotas?</label>
-            <select id="cuotas" name="cuotas">
-                <option value="no">No</option>
-                <option value="si">Sí</option>
-            </select>
-            <br>
-            <label for="oferta">¿Está en oferta?</label>
-            <select id="oferta" name="oferta">
-                <option value="no">No</option>
-                <option value="si">Sí</option>
-            </select>
-            <br>
-            <label for="envio_gratis">¿Ofrece envío gratis?</label>
-            <select id="envio_gratis" name="envio_gratis">
-                <option value="no">No</option>
-                <option value="si">Sí</option>
-            </select>
-            <br>
-            <label for="marca_producto">Marca</label>
-            <select id="marca_producto" name="marca_producto">
-                <option value="nike">Nike</option>
-                <option value="adidas">Adidas</option>
-                <option value="puma">Puma</option>
-            </select>
-            <br>
-            <label for="genero_producto">Género</label>
-            <select id="genero_producto" name="genero_producto">
-                <option value="hombre">Hombre</option>
-                <option value="mujer">Mujer</option>
-                <option value="unisex">Unisex</option>
-                <option value="niños">Niños</option>
-                <option value="no_aplica">No aplica</option>
-            </select>
-            <br>
-            <input type="submit" value="Guardar Producto">
         </div>
-        
-    </form>
-   
-    <h2 id="titulo">Ofertas destacadas</h2>
-    <script>
-        function mostrarOpciones() {
-            var tipoProducto = document.getElementById('tipo_producto').value;
-            // Mostrar u ocultar las opciones cuando se seleccione un tipo de producto
-            document.getElementById('opciones_producto').style.display = tipoProducto ? 'block' : 'none';
-        }
-        function mostrarOpciones() {
+        <button type="button" onclick="mostrarPaso(4)" disabled id="next2">Siguiente</button>
+    </div>
+
+    <!-- Paso 4: Detalles del producto -->
+    <div id="paso4" class="form-step" style="display:none;">
+        <label for="nombre_producto">Nombre del producto</label>
+        <input class="admin" type="text" id="nombre_producto" name="nombre_producto" required>
+        <br>
+        <label for="imagen_producto">Imagen del producto</label>
+        <input class="admin" type="file" id="imagen_producto" name="imagen_producto" accept="image/*" required>
+        <br>
+        <label for="precio_producto">Precio</label>
+        <input class="admin" type="number" id="precio_producto" name="precio_producto" required>
+        <br>
+        <label for="cuotas">¿Ofrece cuotas?</label>
+        <select id="cuotas" name="cuotas">
+            <option value="no">No</option>
+            <option value="si">Sí</option>
+        </select>
+        <br>
+        <label for="oferta">¿Está en oferta?</label>
+        <select id="oferta" name="oferta">
+            <option value="no">No</option>
+            <option value="si">Sí</option>
+        </select>
+        <br>
+        <label for="envio_gratis">¿Ofrece envío gratis?</label>
+        <select id="envio_gratis" name="envio_gratis">
+            <option value="no">No</option>
+            <option value="si">Sí</option>
+        </select>
+        <br>
+        <label for="marca_producto">Marca</label>
+        <select id="marca_producto" name="marca_producto">
+            <option value="nike">Nike</option>
+            <option value="adidas">Adidas</option>
+            <option value="puma">Puma</option>
+        </select>
+        <br>
+        <label for="genero_producto">Género</label>
+        <select id="genero_producto" name="genero_producto">
+            <option value="hombre">Hombre</option>
+            <option value="mujer">Mujer</option>
+            <option value="unisex">Unisex</option>
+            <option value="niños">Niños</option>
+            <option value="no_aplica">No aplica</option>
+        </select>
+        <br>
+        <input type="submit" value="Guardar Producto">
+    </div>
+</form>
+
+<script>
+    function mostrarPaso(paso) {
+        document.querySelectorAll('.form-step').forEach((el) => el.style.display = 'none');
+        document.getElementById('paso' + paso).style.display = 'block';
+    }
+
+    function mostrarOpciones() {
         var tipoProducto = document.getElementById('tipo_producto').value;
         var categoriaSelect = document.getElementById('categoria_producto');
         var next1 = document.getElementById('next1');
@@ -198,13 +206,10 @@
             next2.disabled = true;
         }
     }
-    </script>
-   
+</script>
 
         <!-- Área visible del carrusel -->
         <div class="carousel-container">
-        <button class="arrow left-arrow" id="leftArrow" onclick="moveCarousel(-1)">&#8249;</button>
-
             <div class="carousel-wrapper">
                 <div class="carousel" id="carousel">
                     <?php
@@ -212,7 +217,7 @@
                     $servername = "localhost";
                     $username = "root";
                     $password = "";
-                    $dbname = "productos";
+                    $dbname = "tienda";
     
                     $conn = new mysqli($servername, $username, $password, $dbname);
     
@@ -252,44 +257,13 @@
                     ?>
                 </div>
             </div>
-            <button class="arrow right-arrow" id="rightArrow" onclick="moveCarousel(1)">&#8250;</button>
         </div>
 
         <!-- Flecha Derecha -->
-        
-        <div class="carrusel">
-        <div class="carrusel-items">
-            <a href="guardar_producto.php" ><img src="nike.jpg" alt="Imagen 1" class="item" ></a>
-            <a href="#"><img src="adidas.png" alt="Imagen 2" class="item" ></a>
-            <a href="#"><img src="crocs.jpg" alt="Imagen 3" class="item"></a>
-            <a href="#"><img src="converse.png" alt="Imagen 4" class="item"></a>
-            <a href="#"><img src="nb.jpg" alt="Imagen 5" class="item"></a>
-            <a href="#"><img src="polo.jpg" alt="Imagen 6" class="item"></a>
-            <a href="#"><img src="topper.jpg" alt="Imagen 7" class="item"></a>
-            
-            <a href="#"><img src="puma.png" alt="Imagen 8" class="item"></a>
-            
-        </div>
-    </div>
-    <script src="index.js"></script>
-<script> 
-   // script.js
-let currentIndex = 0;
-const items = document.querySelectorAll('.carrusel .item');
-const totalItems = items.length;
-const itemsToShow = 4; // Cantidad de imágenes a mostrar
-const itemWidth = 150; // Ancho de cada imagen
-
-function showNextItems() {
-    currentIndex = (currentIndex + 1) % (totalItems - itemsToShow + 1); // Incrementar el índice
-    const offset = -currentIndex * itemWidth; // Calcular el desplazamiento
-    document.querySelector('.carrusel-items').style.transform = `translateX(${offset}px)`; // Aplicar el desplazamiento
-}
-
-// Cambiar automáticamente cada 3 segundos
-setInterval(showNextItems, 3000);
-</script>
+        <button class="arrow right-arrow" id="rightArrow" onclick="moveCarousel(1)">&#8250;</button>
     
+
+    <script src="index.js"></script>
 
     <footer>
         <p>© 2024 Sports Store. All rights reserved.</p>
