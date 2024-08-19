@@ -3,7 +3,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "productos";
+$dbname = "tienda";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -23,7 +23,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $envio_gratis = $_POST['envio_gratis'];
     $marca_producto = $_POST['marca_producto'];
     $genero_producto = $_POST['genero_producto'];
-
     $nombre_imagen = $_FILES['imagen_producto']['name'];
     $ruta_imagen = "uploads/" . basename($nombre_imagen);
 
